@@ -1,0 +1,8 @@
+# Sensitive data
+.env
+vendor/
+
+# File sistem dan cache
+.DS_Store
+Thumbs.db
+.cache

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+</head>
+<body>
+   
+    <!-- Header -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/logo.png" alt="Logo" width="40">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#work">Work</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonials">Testimonials</a>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Contact</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                    <h1>Hi Everyone, My Name is Farid Firdaus</h1>
+                    <h3>I am a <span class="typing-text" data-text="Student,Web Developer,UI/UX Designer,Problem Solver"></span></h3>
+                    <p>This is my portfolio website where I showcase various projects and accomplishments in the field of web development.</p>
+                    <a href="#contact" class="btn btn-primary btn-animated">Contact Me</a>
+                </div>
+                <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="300">
+                    <img src="images/logo.png" alt="Lion Logo" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Work Section -->
+<section id="work" class="work-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Work</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Here is some work I have collaborated with</p>
+        
+        <div class="work-filter mb-4" data-aos="fade-up" data-aos-delay="200">
+            <button class="btn btn-sm btn-outline-secondary active" data-filter="all">All</button>
+            <button class="btn btn-sm btn-outline-secondary" data-filter="website">Website</button>
+            <button class="btn btn-sm btn-outline-secondary" data-filter="design">Design</button>
+        </div>
+        
+        <div class="row work-gallery" id="work-gallery">
+            <!-- Static Work Items -->
+            <div class="col-md-4 work-item" data-category="website" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card">
+                    <img src="images/project/project1.png" class="card-img-top" alt="E-commerce Website">
+                    <div class="card-body">
+                        <h5 class="card-title">E-commerce Platform</h5>
+                        <p class="card-text">A responsive e-commerce website built with React, Next.js, and Tailwind CSS.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 work-item" data-category="design" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card">
+                    <img src="images/project/project2.png" class="card-img-top" alt="Personal Blog">
+                    <div class="card-body">
+                        <h5 class="card-title">Personal Blog</h5>
+                        <p class="card-text">A dynamic blog platform with content management system using MERN stack.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 work-item" data-category="website" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card">
+                    <img src="images/project/project3.png" class="card-img-top" alt="Mobile App UI">
+                    <div class="card-body">
+                        <h5 class="card-title">Mobile App UI Design</h5>
+                        <p class="card-text">UI/UX design for a fitness tracking mobile application created with Figma.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 work-item" data-category="website" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card">
+                    <img src="images/project/project4.png" class="card-img-top" alt="Portfolio Website">
+                    <div class="card-body">
+                        <h5 class="card-title">Portfolio Website</h5>
+                        <p class="card-text">A personal portfolio website built with HTML, CSS, and JavaScript.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 work-item" data-category="website" data-aos="zoom-in" data-aos-delay="500">
+                <div class="card">
+                    <img src="images/project/project5.png" class="card-img-top" alt="Logo Design">
+                    <div class="card-body">
+                        <h5 class="card-title">Brand Identity Design</h5>
+                        <p class="card-text">Logo and brand identity design for a local coffee shop.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 work-item" data-category="website" data-aos="zoom-in" data-aos-delay="600">
+                <div class="card">
+                    <img src="images/project/project6.png" class="card-img-top" alt="Social Media Design">
+                    <div class="card-body">
+                        <h5 class="card-title">Social Media Graphics</h5>
+                        <p class="card-text">Collection of social media posts and stories designed for digital marketing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <!-- About Me Section -->
+<section id="about" class="about-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">About Me</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+                <p class="about-intro">Passionate about crafting modern and efficient web solutions, I enjoy turning ideas into functional digital experiences.</p>
+                
+                <div class="about-info">
+                    <div class="about-info-item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-university about-info-icon"></i>
+                        <p>I am Informatics Student at Siliwangi University</p>
+                    </div>
+                    <div class="about-info-item" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-laptop-code about-info-icon"></i>
+                        <p>I am Passionate to Learn About Development, especially Web Development</p>
+                    </div>
+                    <div class="about-info-item" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-brain about-info-icon"></i>
+                        <p>It is also possible that I will learn about AI and Machine Learning in the future</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center" data-aos="fade-left" data-aos-delay="200">
+                <div class="about-icon-container">
+                    <i class="fas fa-code fa-8x about-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">My Skills</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Technologies I work with</p>
+        
+        <div class="row">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="200">
+                <div class="skill-progress-item">
+                    <div class="d-flex justify-content-between">
+                        <h6>HTML & CSS</h6>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-progress-item">
+                    <div class="d-flex justify-content-between">
+                        <h6>JavaScript</h6>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-progress-item">
+                    <div class="d-flex justify-content-between">
+                        <h6>React</h6>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6" data-aos="fade-left" data-aos-delay="300">
+                <div class="skill-progress-item">
+                    <div class="d-flex justify-content-between">
+                        <h6>UI/UX Design</h6>
+                        <span>75%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-progress-item">
+                    <div class="d-flex justify-content-between">
+                        <h6>PHP & MySQL</h6>
+                        <span>70%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-progress-item">
+                    <div class="d-flex justify-content-between">
+                        <h6>Node.js</h6>
+                        <span>65%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row skills-icons mt-5">
+            <!-- Frontend -->
+            <div class="col-4 col-md-2 skill-item text-center" data-aos="flip-up" data-aos-delay="100">
+                <i class="fab fa-html5 fa-3x"></i>
+                <p class="mt-2">HTML5</p>
+            </div>
+            <div class="col-4 col-md-2 skill-item text-center" data-aos="flip-up" data-aos-delay="150">
+                <i class="fab fa-css3-alt fa-3x"></i>
+                <p class="mt-2">CSS3</p>
+            </div>
+            <div class="col-4 col-md-2 skill-item text-center" data-aos="flip-up" data-aos-delay="200">
+                <i class="fab fa-js fa-3x"></i>
+                <p class="mt-2">JavaScript</p>
+            </div>
+            <div class="col-4 col-md-2 skill-item text-center" data-aos="flip-up" data-aos-delay="250">
+                <i class="fab fa-react fa-3x react-spin"></i>
+                <p class="mt-2">React</p>
+            </div>
+            <div class="col-4 col-md-2 skill-item text-center" data-aos="flip-up" data-aos-delay="300">
+                <i class="fab fa-php fa-3x"></i>
+                <p class="mt-2">PHP</p>
+            </div>
+            <div class="col-4 col-md-2 skill-item text-center" data-aos="flip-up" data-aos-delay="350">
+                <i class="fab fa-bootstrap fa-3x"></i>
+                <p class="mt-2">Bootstrap</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <p class="section-subtitle">Here are some common questions people ask about my services and how I work</p>
+            
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            What services do you offer?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            I specialize in web development, including front-end, back-end, and full-stack development. I also offer website optimization, UI/UX improvement, and custom web solutions.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            What technologies do you use?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            I mainly work with JavaScript, React, Next.js, Tailwind CSS, and Express.js for backend development. I also use MongoDB and TypeScript for scalable applications.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            How much does a project cost?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The cost varies based on project complexity. Feel free to contact me with details about your project, and I'll provide a tailored quote.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            How long does it take to build a website?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Project timelines depend on scope and complexity. Simple websites may take 1-2 weeks, while complex applications can take a month or more.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Do you offer website maintenance and updates?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, I provide ongoing maintenance, updates, and support to ensure your website runs smoothly.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            Can you redesign or improve an existing website?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            I can enhance performance, update UI/UX, optimize SEO, and improve overall functionality.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Contact</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Fill this form to reach me</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8" data-aos="zoom-in" data-aos-delay="200">
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Testimonials</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Here are testimonials from previous clients</p>
+        
+        <div class="row testimonials-carousel" id="testimonials-container">
+            <!-- Static Testimonial Items -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-item">
+                    <p>"Working with Farid was an absolute pleasure. He delivered our website on time and exceeded all our expectations. His attention to detail and problem-solving skills are outstanding."</p>
+                    <div class="testimonial-author">
+                        <img src="images/clients/client1.jpeg" alt="Sarah Johnson">
+                        <div class="testimonial-author-info">
+                            <h5>Sarah Johnson</h5>
+                            <p>CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-item">
+                    <p>"Farid helped us redesign our entire online presence. His technical knowledge combined with an eye for design resulted in a website that not only looks great but performs exceptionally well."</p>
+                    <div class="testimonial-author">
+                        <img src="images/clients/client2.jpeg" alt="Michael Rodriguez">
+                        <div class="testimonial-author-info">
+                            <h5>Michael Rodriguez</h5>
+                            <p>Marketing Director, Elevation Brand</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-item">
+                    <p>"I hired Farid to develop an e-commerce solution for my small business, and I couldn't be happier with the results. The site is user-friendly, fast, and has helped increase my sales significantly."</p>
+                    <div class="testimonial-author">
+                        <img src="images/clients/client3.jpeg" alt="Emma Wilson">
+                        <div class="testimonial-author-info">
+                            <h5>Emma Wilson</h5>
+                            <p>Owner, Artisan Crafts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#work">Work</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div  class="col-md-3">
+                    <h5>Social Media</h5>
+                    <div class="social-icons">
+                        <a href="mailto:your.email@example.com" target="_blank" class="social-icon-link email-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="social-icon-link linkedin-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" class="social-icon-link github-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://instagram.com/yourusername" target="_blank" class="social-icon-link instagram-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                        <a href="https://facebook.com/yourusername" target="_blank" class="social-icon-link facebook-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" class="social-icon-link twitter-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://tiktok.com/@yourusername" target="_blank" class="social-icon-link tiktok-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://reddit.com/user/yourusername" target="_blank" class="social-icon-link reddit-icon">
+                            <i class="fab fa-reddit-alien"></i>
+                        </a>
+                    </div>
+                    <div class="footer-logo-container">
+                        <img src="images/logo.png" alt="Logo" class="footer-custom-logo">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="images/logo.png" alt="Logo" width="40" class="footer-logo">
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>&copy; 2025 Farid FIrdaus. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div><a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i></a>
+    </footer>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+</body>
+</html>

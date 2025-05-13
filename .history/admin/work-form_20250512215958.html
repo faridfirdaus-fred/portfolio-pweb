@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .sidebar {
+            min-height: 100vh;
+            background-color: #343a40;
+            color: white;
+        }
+        .sidebar a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            padding: 10px 15px;
+            transition: all 0.3s;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .sidebar-heading {
+            padding: 20px 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .preview-image {
+            max-width: 200px;
+            max-height: 120px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #loadingSpinner {
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="sidebar-heading d-flex align-items-center">
+                    <i class="fas fa-user-shield me-2"></i>
+                    <span>Admin Panel</span>
+                </div>
+                <div class="mt-4">
+                    <a href="index.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                    <a href="works.html" class="active">
+                        <i class="fas fa-briefcase me-2"></i> Works
+                    </a>
+                    <a href="testimonials.html">
+                        <i class="fas fa-quote-left me-2"></i> Testimonials
+                    </a>
+                    <a href="messages.html">
+                        <i class="fas fa-envelope me-2"></i> Messages
+                    </a>
+                    <a href="javascript:void(0)" class="mt-5 text-danger" onclick="logout()">
+                        <i class="fas fa-sign-out-alt me-2"></i> Logout
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2" id="pageTitle">Add Work</h1>
+                    <a href="works.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i> Back to Works
+                    </a>
+                </div>
+                
+                <!-- Loading spinner -->
+                <div id="loadingSpinner" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                
+                <!-- Alert messages -->
+                <div id="errorAlert" class="alert alert-danger" style="display: none;"></div>
+                <div id="successAlert" class="alert alert-success" style="display: none;"></div>
+                
+                <!-- Form -->
+                <div class="card">
+                    <div class="card-body">
+                        <form id="workForm">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-select" id="category" name="category" required>
+                                    <option value="website">Website</option>
+                                    <option value="design">Design</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Image Source</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imageType" id="imageTypeLocal" value="local" checked>
+                                    <label class="form-check-label" for="imageTypeLocal">
+                                        Upload Local Image
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imageType" id="imageTypeExternal" value="external">
+                                    <label class="form-check-label" for="imageTypeExternal">
+                                        External Image URL
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3" id="localImageDiv">
+                                <label for="image" class="form-label">Upload Image</label>
+                                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                <small class="text-muted">Recommended size: 800x600 pixels</small>
+                                
+                                <div id="currentLocalImageContainer" class="mt-2" style="display: none;">
+                                    <p>Current image:</p>
+                                    <img id="currentLocalImage" class="preview-image" alt="Current Image">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3" id="externalImageDiv" style="display: none;">
+                                <label for="imageUrl" class="form-label">Image URL</label>
+                                <input type="url" class="form-control" id="imageUrl" name="imageUrl" placeholder="https://example.com/image.jpg">
+                                <small class="text-muted">Enter the full URL to an image (including https://)</small>
+                                
+                                <div id="currentExternalImageContainer" class="mt-2" style="display: none;">
+                                    <p>Current image:</p>
+                                    <img id="currentExternalImage" class="preview-image" alt="Current Image">
+                                </div>
+                            </div>
+                            
+                            <input type="hidden" id="workId" name="id" value="">
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save me-2"></i> <span id="submitButtonText">Save</span> Work
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Global variables
+        let isEdit = false;
+        let currentImage = '';
+        let imageType = 'local';
+        
+        // Check authentication
+        function checkAuth() {
+            const token = localStorage.getItem('admin_token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return false;
+            }
+            return token;
+        }
+        
+        // Get work ID from URL
+        function getWorkId() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+        
+        // Load work for editing
+        function loadWork(id) {
+            $('#loadingSpinner').show();
+            
+            $.ajax({
+                url: 'https://farid-firdaus.lovestoblog.com/php/admin_api/get_work.php',
+                type: 'GET',
+                data: { id: id },
+                headers: {
+                    'Authorization': checkAuth()
+                },
+                success: function(response) {
+                    $('#loadingSpinner').hide();
+                    
+                    try {
+                        const work = JSON.parse(response);
+                        
+                        if (work && work.id) {
+                            // Fill form with work data
+                            $('#workId').val(work.id);
+                            $('#title').val(work.title);
+                            $('#description').val(work.description);
+                            $('#category').val(work.category);
+                            
+                            // Determine image type
+                            if (work.image.startsWith('http://') || work.image.startsWith('https://')) {
+                                imageType = 'external';
+                                $('#imageTypeExternal').prop('checked', true);
+                                $('#imageUrl').val(work.image);
+                                $('#currentExternalImage').attr('src', work.image);
+                                $('#currentExternalImageContainer').show();
+                                $('#localImageDiv').hide();
+                                $('#externalImageDiv').show();
+                            } else {
+                                imageType = 'local';
+                                $('#imageTypeLocal').prop('checked', true);
+                                currentImage = work.image;
+                                $('#currentLocalImage').attr('src', 'https://farid-firdaus.lovestoblog.com/uploads/' + work.image);
+                                $('#currentLocalImageContainer').show();
+                                $('#localImageDiv').show();
+                                $('#externalImageDiv').hide();
+                            }
+                        } else {
+                            $('#errorAlert').text('Work not found').show();
+                            setTimeout(() => {
+                                window.location.href = 'works.html';
+                            }, 2000);
+                        }
+                    } catch (e) {
+                        console.error('Error parsing JSON:', e);
+                        $('#errorAlert').text('Error loading work data').show();
+                    }
+                },
+                error: function() {
+                    $('#loadingSpinner').hide();
+                    $('#errorAlert').text('Failed to load work data').show();
+                }
+            });
+        }
+        
+        // Submit form
+        function submitForm(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            if (!$('#title').val() || !$('#description').val()) {
+                $('#errorAlert').text('Please fill in all required fields').show();
+                return;
+            }
+            
+            // Image validation
+            if (!isEdit) {
+                if (imageType === 'local' && !$('#image')[0].files[0]) {
+                    $('#errorAlert').text('Please select an image to upload').show();
+                    return;
+                }
+                if (imageType === 'external' && !$('#imageUrl').val()) {
+                    $('#errorAlert').text('Please enter an image URL').show();
+                    return;
+                }
+            }
+            
+            // Hide alerts and show loading
+            $('#errorAlert').hide();
+            $('#successAlert').hide();
+            $('#loadingSpinner').show();
+            
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('title', $('#title').val());
+            formData.append('description', $('#description').val());
+            formData.append('category', $('#category').val());
+            formData.append('imageType', imageType);
+            
+            if (imageType === 'local' && $('#image')[0].files[0]) {
+                formData.append('image', $('#image')[0].files[0]);
+            }
+            
+            if (imageType === 'external') {
+                formData.append('imageUrl', $('#imageUrl').val());
+            }
+            
+            if (isEdit) {
+                formData.append('id', $('#workId').val());
+                formData.append('currentImage', currentImage);
+            }
+            
+            // Send AJAX request
+            $.ajax({
+                url: 'https://farid-firdaus.lovestoblog.com/php/admin_api/' + (isEdit ? 'update_work.php' : 'add_work.php'),
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                headers: {
+                    'Authorization': checkAuth()
+                },
+                success: function(response) {
+                    $('#loadingSpinner').hide();
+                    
+                    try {
+                        const result = JSON.parse(response);
+                        
+                        if (result.success) {
+                            $('#successAlert').text(result.message).show();
+                            
+                            // Reset form if adding new work
+                            if (!isEdit) {
+                                $('#workForm')[0].reset();
+                                $('#currentLocalImageContainer').hide();
+                                $('#currentExternalImageContainer').hide();
+                            }
+                            
+                            // Redirect after short delay
+                            setTimeout(() => {
+                                window.location.href = 'works.html?success=true&message=' + encodeURIComponent(result.message);
+                            }, 1500);
+                        } else {
+                            $('#errorAlert').text(result.message || 'Error processing your request').show();
+                        }
+                    } catch (e) {
+                        console.error('Error parsing JSON:', e);
+                        $('#errorAlert').text('Error processing server response').show();
+                    }
+                },
+                error: function() {
+                    $('#loadingSpinner').hide();
+                    $('#errorAlert').text('Server error. Please try again.').show();
+                }
+            });
+        }
+        
+        // Logout function
+        function logout() {
+            localStorage.removeItem('admin_token');
+            window.location.href = 'login.html';
+        }
+        
+        // Initialize page
+        $(document).ready(function() {
+            // Check authentication
+            checkAuth();
+            
+            // Toggle image upload fields
+            $('input[name="imageType"]').on('change', function() {
+                imageType = $(this).val();
+                
+                if (imageType === 'local') {
+                    $('#localImageDiv').show();
+                    $('#externalImageDiv').hide();
+                } else {
+                    $('#localImageDiv').hide();
+                    $('#externalImageDiv').show();
+                }
+            });
+            
+            // Check if we're editing an existing work
+            const id = getWorkId();
+            if (id) {
+                isEdit = true;
+                $('#pageTitle').text('Edit Work');
+                $('#submitButtonText').text('Update');
+                loadWork(id);
+            }
+            
+            // Image preview for local files
+            $('#image').on('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#currentLocalImage').attr('src', e.target.result);
+                        $('#currentLocalImageContainer').show();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Image preview for external URLs
+            $('#imageUrl').on('change', function() {
+                const url = $(this).val();
+                if (url) {
+                    $('#currentExternalImage').attr('src', url);
+                    $('#currentExternalImageContainer').show();
+                } else {
+                    $('#currentExternalImageContainer').hide();
+                }
+            });
+            
+            // Form submission
+            $('#workForm').on('submit', submitForm);
+        });
+    </script>
+</body>
+</html>
