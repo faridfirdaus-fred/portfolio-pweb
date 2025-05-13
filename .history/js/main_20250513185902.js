@@ -101,9 +101,9 @@ function animateProgressBars() {
   }
 }
 
-// Initialize EmailJS
+// Initialize EmailJS with your public key
 (function () {
-  emailjs.init("CQdaKkJvBqKsiPYJ4");
+  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
 })();
 
 // Document ready function with all initializations
@@ -352,8 +352,7 @@ $(document).ready(function () {
 
     // Send email using EmailJS
     emailjs
-      .send("service_fed5lpw", "template_gbepq5g", formData)
-      .then(function () {
+      .send("service_fed5lpw", "template_gbepq5g", formData)      .then(function () {
         // Success
         formStatus.html(
           '<div class="alert alert-success">Pesan berhasil dikirim! Saya akan segera menghubungi Anda.</div>'

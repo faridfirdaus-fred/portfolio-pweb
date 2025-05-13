@@ -103,7 +103,7 @@ function animateProgressBars() {
 
 // Initialize EmailJS
 (function () {
-  emailjs.init("CQdaKkJvBqKsiPYJ4");
+  emailjs.init("YOUR_ACTUAL_PUBLIC_KEY");
 })();
 
 // Document ready function with all initializations

@@ -103,7 +103,7 @@ function animateProgressBars() {
 
 // Initialize EmailJS
 (function () {
-  emailjs.init("CQdaKkJvBqKsiPYJ4");
+  emailjs.init("YOUR_ACTUAL_PUBLIC_KEY");
 })();
 
 // Document ready function with all initializations
@@ -352,7 +352,7 @@ $(document).ready(function () {
 
     // Send email using EmailJS
     emailjs
-      .send("service_fed5lpw", "template_gbepq5g", formData)
+      .send("YOUR_ACTUAL_SERVICE_ID", "YOUR_ACTUAL_TEMPLATE_ID", formData)
       .then(function () {
         // Success
         formStatus.html(

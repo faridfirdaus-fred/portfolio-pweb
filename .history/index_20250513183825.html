@@ -462,40 +462,19 @@
                     <form id="contactForm" novalidate>
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="name" name="name" required
-                                   minlength="3" maxlength="50">
-                            <div class="invalid-feedback">
-                                Nama lengkap harus diisi (3-50 karakter)
-                            </div>
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                            <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" required>
-                            <div class="invalid-feedback">
-                                Masukkan email yang valid
-                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="phone" class="form-label">Nomor Handphone <span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" id="phone" name="phone" required
-                                   pattern="[0-9]{10,13}">
-                            <div class="invalid-feedback">
-                                Masukkan nomor handphone yang valid (10-13 digit)
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Pesan <span class="text-danger">*</span></label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required
-                                      minlength="10" maxlength="500"></textarea>
-                            <div class="invalid-feedback">
-                                Pesan harus diisi (10-500 karakter)
-                            </div>
-                            <div class="form-text text-end">
-                                <span id="charCount">0</span>/500 karakter
-                            </div>
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" id="submitBtn">
-                            <span class="btn-text">Kirim Pesan</span>
+                            <span class="btn-text">Send Message</span>
                             <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </button>
                     </form>
@@ -620,10 +599,10 @@
             
             <div class="footer-bottom">
                 <div class="row">
-                    <div class="col-md-6 ">
-                        <img src="images/logo.svg" alt="Logo" width="40" class="footer-logo display-sm-none">
+                    <div class="col-md-6">
+                        <img src="images/logo.svg" alt="Logo" width="40" class="footer-logo">
                     </div>
-                    <div class="col-md-6 text-center text-md-end">
+                    <div class="col-md-6 text-md-end">
                         <p>&copy; 2025 Farid FIrdaus. All Rights Reserved.</p>
                     </div>
                 </div>

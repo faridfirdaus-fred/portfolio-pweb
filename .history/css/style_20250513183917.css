@@ -1516,10 +1516,3 @@ section {
 [data-bs-theme="dark"] .char-counter {
     color: #adb5bd;
 }
-
-/* Mobile display utilities */
-@media (max-width: 768px) {
-    .display-sm-none {
-        display: none !important;
-    }
-}

@@ -103,7 +103,7 @@ function animateProgressBars() {
 
 // Initialize EmailJS
 (function () {
-  emailjs.init("CQdaKkJvBqKsiPYJ4");
+  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
 })();
 
 // Document ready function with all initializations
@@ -208,7 +208,7 @@ $(document).ready(function () {
     const value = $(input).val();
     const minLength = 3;
     const maxLength = 50;
-
+    
     if (!value) {
       return "Nama lengkap harus diisi";
     } else if (value.length < minLength) {
@@ -222,7 +222,7 @@ $(document).ready(function () {
   function validateEmail(input) {
     const value = $(input).val();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    
     if (!value) {
       return "Email harus diisi";
     } else if (!emailRegex.test(value)) {
@@ -234,7 +234,7 @@ $(document).ready(function () {
   function validatePhone(input) {
     const value = $(input).val();
     const phoneRegex = /^[0-9]{10,13}$/;
-
+    
     if (!value) {
       return "Nomor handphone harus diisi";
     } else if (!phoneRegex.test(value)) {
@@ -247,7 +247,7 @@ $(document).ready(function () {
     const value = $(input).val();
     const minLength = 10;
     const maxLength = 500;
-
+    
     if (!value) {
       return "Pesan harus diisi";
     } else if (value.length < minLength) {
@@ -259,10 +259,10 @@ $(document).ready(function () {
   }
 
   // Real-time validation on input
-  $("#name").on("input", function () {
+  $("#name").on("input", function() {
     const error = validateName(this);
     const feedback = $(this).siblings(".invalid-feedback");
-
+    
     if (error) {
       $(this).addClass("is-invalid").removeClass("is-valid");
       feedback.text(error).show();
@@ -272,10 +272,10 @@ $(document).ready(function () {
     }
   });
 
-  $("#email").on("input", function () {
+  $("#email").on("input", function() {
     const error = validateEmail(this);
     const feedback = $(this).siblings(".invalid-feedback");
-
+    
     if (error) {
       $(this).addClass("is-invalid").removeClass("is-valid");
       feedback.text(error).show();
@@ -284,100 +284,112 @@ $(document).ready(function () {
       feedback.hide();
     }
   });
+  // Custom validation rules
+  $.validator.addMethod(
+    "phoneFormat",
+    function (value, element) {
+      return this.optional(element) || /^[0-9]{10,13}$/.test(value);
+    },
+    "Masukkan nomor handphone yang valid (10-13 digit)"
+  );
 
-  $("#phone").on("input", function () {
-    const error = validatePhone(this);
-    const feedback = $(this).siblings(".invalid-feedback");
+  // Initialize form validation
+  contactForm.validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 3,
+        maxlength: 50,
+      },
+      email: {
+        required: true,
+        email: true,
+      },
+      phone: {
+        required: true,
+        phoneFormat: true,
+      },
+      message: {
+        required: true,
+        minlength: 10,
+        maxlength: 500,
+      },
+    },
+    messages: {
+      name: {
+        required: "Nama lengkap harus diisi",
+        minlength: "Nama minimal 3 karakter",
+        maxlength: "Nama maksimal 50 karakter",
+      },
+      email: {
+        required: "Email harus diisi",
+        email: "Masukkan email yang valid",
+      },
+      phone: {
+        required: "Nomor handphone harus diisi",
+        phoneFormat: "Masukkan nomor handphone yang valid (10-13 digit)",
+      },
+      message: {
+        required: "Pesan harus diisi",
+        minlength: "Pesan minimal 10 karakter",
+        maxlength: "Pesan maksimal 500 karakter",
+      },
+    },
+    errorElement: "div",
+    errorClass: "invalid-feedback",
+    validClass: "valid-feedback",
+    highlight: function (element) {
+      $(element).addClass("is-invalid").removeClass("is-valid");
+    },
+    unhighlight: function (element) {
+      $(element).addClass("is-valid").removeClass("is-invalid");
+    },
+    submitHandler: function (form) {
+      // Get form data
+      const formData = {
+        name: $("#name").val(),
+        email: $("#email").val(),
+        phone: $("#phone").val(),
+        message: $("#message").val(),
+        to_email: "fdiraf77@gmail.com",
+      };
 
-    if (error) {
-      $(this).addClass("is-invalid").removeClass("is-valid");
-      feedback.text(error).show();
-    } else {
-      $(this).addClass("is-valid").removeClass("is-invalid");
-      feedback.hide();
-    }
+      // Disable submit button and show spinner
+      submitBtn.prop("disabled", true);
+      btnText.text("Mengirim...");
+      spinner.removeClass("d-none");
+      formStatus.html("");
+
+      // Send email using EmailJS
+      emailjs
+        .send("service_fed5lpw", "template_gbepq5g", formData)
+        .then(function () {
+          // Success
+          formStatus.html(
+            '<div class="alert alert-success">Pesan berhasil dikirim! Saya akan segera menghubungi Anda.</div>'
+          );
+          form.reset();
+          charCount.text("0");
+        })
+        .catch(function (error) {
+          // Error
+          formStatus.html(
+            '<div class="alert alert-danger">Maaf, terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.</div>'
+          );
+          console.error("EmailJS error:", error);
+        })
+        .finally(function () {
+          // Re-enable submit button and hide spinner
+          submitBtn.prop("disabled", false);
+          btnText.text("Kirim Pesan");
+          spinner.addClass("d-none");
+        });
+    },
   });
 
-  $("#message").on("input", function () {
-    const error = validateMessage(this);
-    const feedback = $(this).siblings(".invalid-feedback");
-    const currentLength = $(this).val().length;
-
-    // Update character counter
-    charCount.text(currentLength);
-    if (currentLength >= 500) {
-      charCount.addClass("text-danger");
-    } else {
-      charCount.removeClass("text-danger");
-    }
-
-    if (error) {
-      $(this).addClass("is-invalid").removeClass("is-valid");
-      feedback.text(error).show();
-    } else {
-      $(this).addClass("is-valid").removeClass("is-invalid");
-      feedback.hide();
-    }
-  });
-
-  // Form submission validation
-  contactForm.on("submit", function (e) {
-    e.preventDefault();
-
-    // Validate all fields
-    const nameError = validateName($("#name")[0]);
-    const emailError = validateEmail($("#email")[0]);
-    const phoneError = validatePhone($("#phone")[0]);
-    const messageError = validateMessage($("#message")[0]);
-
-    // If any field has an error, don't submit
-    if (nameError || emailError || phoneError || messageError) {
-      return false;
-    }
-
-    // Get form data
-    const formData = {
-      from_name: $("#name").val(),
-      from_email: $("#email").val(),
-      phone_number: $("#phone").val(),
-      message: $("#message").val(),
-      to_email: "fdiraf77@gmail.com",
-    };
-
-    // Disable submit button and show spinner
-    submitBtn.prop("disabled", true);
-    btnText.text("Mengirim...");
-    spinner.removeClass("d-none");
-    formStatus.html("");
-
-    // Send email using EmailJS
-    emailjs
-      .send("service_fed5lpw", "template_gbepq5g", formData)
-      .then(function () {
-        // Success
-        formStatus.html(
-          '<div class="alert alert-success">Pesan berhasil dikirim! Saya akan segera menghubungi Anda.</div>'
-        );
-        contactForm[0].reset();
-        charCount.text("0");
-
-        // Reset validation states
-        $(".form-control").removeClass("is-valid is-invalid");
-        $(".invalid-feedback").hide();
-      })
-      .catch(function (error) {
-        // Error
-        formStatus.html(
-          '<div class="alert alert-danger">Maaf, terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.</div>'
-        );
-        console.error("EmailJS error:", error);
-      })
-      .finally(function () {
-        // Re-enable submit button and hide spinner
-        submitBtn.prop("disabled", false);
-        btnText.text("Kirim Pesan");
-        spinner.addClass("d-none");
-      });
+  // Real-time validation
+  contactForm.find("input, textarea").on("blur", function () {
+    $(this).valid();
   });
 
   // Smooth scrolling for anchor links

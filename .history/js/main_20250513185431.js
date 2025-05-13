@@ -103,7 +103,7 @@ function animateProgressBars() {
 
 // Initialize EmailJS
 (function () {
-  emailjs.init("CQdaKkJvBqKsiPYJ4");
+  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
 })();
 
 // Document ready function with all initializations
@@ -337,9 +337,9 @@ $(document).ready(function () {
 
     // Get form data
     const formData = {
-      from_name: $("#name").val(),
-      from_email: $("#email").val(),
-      phone_number: $("#phone").val(),
+      name: $("#name").val(),
+      email: $("#email").val(),
+      phone: $("#phone").val(),
       message: $("#message").val(),
       to_email: "fdiraf77@gmail.com",
     };
