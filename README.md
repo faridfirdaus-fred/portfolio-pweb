@@ -1,11 +1,11 @@
-Portfolio Website - Farid Firdaus
+# Portfolio Website - Farid Firdaus
 
 A modern, responsive personal portfolio website showcasing web development skills, projects, and professional information.
 
-📋 Overview
+ # 📋Overview
 This portfolio website serves as a professional online presence to display my work, skills, and contact information. Built with modern web technologies, the site features an interactive UI with smooth animations, responsive design, and clean aesthetics.
 
-🚀 Features
+# 🚀 Features
 - Responsive design that works on all devices
 - Dark/Light theme toggle
 - Animated UI elements with AOS (Animate on Scroll)
@@ -15,7 +15,8 @@ This portfolio website serves as a professional online presence to display my wo
 - Contact form
 - Client testimonials
 - Social media integration
-💻 Technologies Used
+  
+# 💻 Technologies Used
 - HTML5
 - CSS3
 - JavaScript
@@ -25,24 +26,21 @@ This portfolio website serves as a professional online presence to display my wo
 - AOS (Animate on Scroll)
 - Typed.js
 
-🪴 Deployment
+# 🪴 Deployment
 https://faridfirdaus-fred.github.io/portfolio-pweb/
 
 
-🛠️ Installation & Setup
-# Prerequisites
+# 🛠️ Installation & Setup
+Prerequisites:
 XAMPP, WAMP, MAMP, or any local server environment
 Web browser (Chrome, Firefox, Safari, Edge)
 
-# Installation Steps
+Installation Steps:
 1. Clone this repository or download the ZIP file
 2. Move the project to your local Computer
 3, Access the website through your browser
 
-📷 Screenshots
-!Homepage Projects Section Contact Section
-
-🔧 Customization
+# 🔧 Customization
 The website can be easily customized:
 - Update personal information in the HTML files
 - Modify the color scheme by editing CSS variables in the style.css file
@@ -50,16 +48,16 @@ The website can be easily customized:
 - Customize skills and their percentages
 - Update social media links in the footer
   
-📱 Browser Support
+# 📱 Browser Support
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
 - Opera (latest)
-📄 License
+# 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-👏 Acknowledgements
+# 👏 Acknowledgements
 - Bootstrap
 - Font Awesome
 - AOS Library
