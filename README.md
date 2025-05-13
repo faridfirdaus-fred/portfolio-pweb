@@ -6,59 +6,63 @@ A modern, responsive personal portfolio website showcasing web development skill
 This portfolio website serves as a professional online presence to display my work, skills, and contact information. Built with modern web technologies, the site features an interactive UI with smooth animations, responsive design, and clean aesthetics.
 
 🚀 Features
-Responsive design that works on all devices
-Dark/Light theme toggle
-Animated UI elements with AOS (Animate on Scroll)
-Project showcase with filtering capabilities
-Skills section with visual indicators
-FAQ accordion section
-Contact form
-Client testimonials
-Social media integration
+- Responsive design that works on all devices
+- Dark/Light theme toggle
+- Animated UI elements with AOS (Animate on Scroll)
+- Project showcase with filtering capabilities
+- Skills section with visual indicators
+- FAQ accordion section
+- Contact form
+- Client testimonials
+- Social media integration
 💻 Technologies Used
-HTML5
-CSS3
-JavaScript
-Bootstrap 5
-jQuery
-Font Awesome Icons
-AOS (Animate on Scroll)
-Typed.js
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap 5
+- jQuery
+- Font Awesome Icons
+- AOS (Animate on Scroll)
+- Typed.js
+
+🪴 Deployment
+https://faridfirdaus-fred.github.io/portfolio-pweb/
+
+
 🛠️ Installation & Setup
-Prerequisites
+# Prerequisites
 XAMPP, WAMP, MAMP, or any local server environment
 Web browser (Chrome, Firefox, Safari, Edge)
-Installation Steps
-Clone this repository or download the ZIP file
-Move the project to your local server directory (e.g., htdocs for XAMPP)
-Start your local server
 
-Access the website through your browser
+# Installation Steps
+1. Clone this repository or download the ZIP file
+2. Move the project to your local Computer
+3, Access the website through your browser
 
 📷 Screenshots
 !Homepage Projects Section Contact Section
 
 🔧 Customization
 The website can be easily customized:
-
-Update personal information in the HTML files
-Modify the color scheme by editing CSS variables in the style.css file
-Add or remove project items in the work section
-Customize skills and their percentages
-Update social media links in the footer
+- Update personal information in the HTML files
+- Modify the color scheme by editing CSS variables in the style.css file
+- Add or remove project items in the work section
+- Customize skills and their percentages
+- Update social media links in the footer
+  
 📱 Browser Support
-Chrome (latest)
-Firefox (latest)
-Safari (latest)
-Edge (latest)
-Opera (latest)
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 👏 Acknowledgements
-Bootstrap
-Font Awesome
-AOS Library
-Typed.js
+- Bootstrap
+- Font Awesome
+- AOS Library
+- Typed.js
 
 © 2025 Farid Firdaus | All Rights Reserved
