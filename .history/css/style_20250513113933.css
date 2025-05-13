@@ -270,126 +270,25 @@ body {
 }
 
 /* Responsive navbar adjustments */
-/* Mobile Responsive Fixes - Add these to your CSS */
-
-/* Enhanced Mobile Navbar Adjustments */
-@media (max-width: 991px) {
-  /* Fix navbar width issue */
-  .navbar-container {
-    width: 100%;
-    padding: 0.75rem 0; /* Remove horizontal padding */
-  }
-  
-  .container-fluid {
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 100%;
-  }
-  
-  /* Fix navbar collapse width */
-  .navbar-collapse {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%; /* Ensure it takes up exactly 100% width */
-    box-sizing: border-box;
-  }
-  
-  /* Center align all nav items */
-  .navbar-nav {
-    width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  
-  /* Ensure navbar toggle button is properly positioned */
-  .navbar-toggler {
-    padding: 0.25rem 0.5rem;
-    margin-right: 0;
-  }
-}
-
-/* Extra small device optimizations */
-@media (max-width: 576px) {
-  /* Container padding adjustments for proper alignment */
-  .container, .container-fluid {
-    padding-left: 15px;
-    padding-right: 15px;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    max-width: 100%;
-  }
-  
-  /* Fix any potential overflow issues */
-  body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-  
-  /* Ensure hero content fits on screen */
-  .hero-content {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  /* Fix margin/padding to prevent overflow */
-  .row {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  
-  .col, [class*="col-"] {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  /* Logo adjustment */
-  .hero-image {
-    max-width: 70%;
-    margin: 0 auto;
-  }
-  
-  /* Fix buttons overflow */
-  .d-flex.flex-wrap.gap-2 {
-    justify-content: center;
-    width: 100%;
-  }
-  
-  /* Adjust social media icons layout */
-  .social-icons {
-    width: 100%;
-    justify-content: center;
-    gap: 8px;
-    margin: 0 auto 20px;
-    max-width: 280px; /* Ensure width fits all icons */
-  }
-  
-  .social-icon-link {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-  
-  /* Center footer content better */
-  .footer .col-md-3 {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-
-/* Fix for collapsed menu dropdown positioning */
 @media (max-width: 991px) {
   .navbar-collapse {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: auto;
-    margin-left: 15px;
-    margin-right: 15px;
-    z-index: 1000;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 1rem;
+    margin-top: 1rem;
   }
   
-  .container > .navbar {
-    position: relative;
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+  
+  .nav-link::after {
+    display: none;
+  }
+  
+  .theme-toggle-wrapper {
+    margin: 1rem 0 0;
   }
 }
 
@@ -1290,12 +1189,105 @@ section {
   fill: #f1f5f9; /* Light color for dark mode */
 }
 
-/* For logos with multiple colors, you can target specific paths */
-/* Example: 
-[data-theme="dark"] .navbar-brand svg .primary-path {
-  fill: var(--primary-color);
+/* Mobile-first adjustments */
+@media (max-width: 576px) {
+  .hero-header h1 {
+    font-size: 2rem; /* Kurangi ukuran font */
+  }
+
+  .hero-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .hero-image {
+    max-width: 90%; /* Kurangi ukuran gambar */
+    margin-top: 1.5rem;
+  }
+
+  .navbar-container {
+    padding: 0.5rem 0;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer h5 {
+    font-size: 1rem;
+  }
+
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .social-icon-link {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
 }
-[data-theme="dark"] .navbar-brand svg .secondary-path {
-  fill: var(--accent-color);
+
+@media (max-width: 768px) {
+  .work-gallery .work-item {
+    flex: 0 0 100%; /* Setiap item mengambil 100% lebar */
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-info-item {
+    flex-direction: column; /* Ubah ke kolom */
+    text-align: center;
+  }
+
+  .about-info-icon {
+    margin-bottom: 1rem;
+  }
+
+  .skills-icons .skill-item {
+    flex: 0 0 50%; /* Dua kolom pada layar kecil */
+    max-width: 50%;
+  }
 }
-*/
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+
+  .theme-toggle-wrapper {
+    margin: 1rem 0 0;
+  }
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .footer-bottom .text-md-end {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .footer-links {
+    text-align: center;
+  }
+
+  .footer-logo-container {
+    margin-bottom: 1rem;
+  }
+}
+

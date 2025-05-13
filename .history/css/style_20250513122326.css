@@ -47,6 +47,7 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
   --white-rgb: 30, 41, 59;
 }
+
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
   background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to));
@@ -77,6 +78,7 @@ body {
 [data-theme="dark"] .navbar-container.scrolled {
   background-color: rgba(30, 41, 59, 0.85);
 }
+
 /* Make active nav links more visible in dark mode */
 [data-theme="dark"] .nav-link.active {
   color: var(--primary-light); /* Lighter shade for better visibility */
@@ -89,6 +91,7 @@ body {
   height: 3px; /* Make it slightly thicker */
   background-color: var(--primary-light); /* Brighter color for the underline */
 }
+
 .navbar-brand {
   font-weight: 700;
   font-size: 1.5rem;
@@ -182,6 +185,7 @@ body {
 [data-theme="dark"] .theme-toggle .dark-icon {
   display: inline-block; /* Show moon icon in dark mode */
 }
+
 /* Adjust hero section to account for fixed navbar */
 .hero-header {
   padding-top: 100px;
@@ -270,126 +274,67 @@ body {
 }
 
 /* Responsive navbar adjustments */
-/* Mobile Responsive Fixes - Add these to your CSS */
-
-/* Enhanced Mobile Navbar Adjustments */
+/* Improved Mobile Navbar Styling */
 @media (max-width: 991px) {
-  /* Fix navbar width issue */
   .navbar-container {
-    width: 100%;
-    padding: 0.75rem 0; /* Remove horizontal padding */
+    padding: 0.75rem 15px; /* Add horizontal padding to contain elements */
+  }
+  
+  .navbar-collapse {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 1rem;
+    margin-top: 1rem;
+    max-width: 100%; /* Ensure it doesn't overflow the screen */
+    overflow-x: hidden; /* Prevent horizontal scroll */
   }
   
   .container-fluid {
-    padding-left: 15px;
-    padding-right: 15px;
-    width: 100%;
-  }
-  
-  /* Fix navbar collapse width */
-  .navbar-collapse {
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%; /* Ensure it takes up exactly 100% width */
-    box-sizing: border-box;
-  }
-  
-  /* Center align all nav items */
-  .navbar-nav {
-    width: 100%;
     padding-left: 0;
     padding-right: 0;
   }
   
-  /* Ensure navbar toggle button is properly positioned */
+  .nav-item {
+    margin: 0.5rem 0;
+    width: 100%; /* Make items take full width */
+    text-align: center; /* Center the text */
+  }
+  
+  .nav-link {
+    padding: 0.75rem; /* More padding for better tap targets */
+    display: block; /* Make link fill the space */
+  }
+  
+  .nav-link::after {
+    display: none;
+  }
+  
+  .theme-toggle-wrapper {
+    margin: 1rem 0 0;
+    display: flex;
+    justify-content: center; /* Center the theme toggle */
+  }
+  
+  /* Ensure navbar brand (logo) is properly sized on mobile */
+  .navbar-brand img {
+    height: 32px; /* Slightly smaller logo on mobile */
+  }
+  
+  /* Fix for dark mode navbar */
+  [data-theme="dark"] .navbar-collapse {
+    background-color: var(--white); /* Use the theme variable */
+  }
+}
+
+/* Extra adjustments for very small screens */
+@media (max-width: 380px) {
+  .navbar-brand img {
+    height: 28px; /* Even smaller logo on very small screens */
+  }
+  
   .navbar-toggler {
-    padding: 0.25rem 0.5rem;
-    margin-right: 0;
-  }
-}
-
-/* Extra small device optimizations */
-@media (max-width: 576px) {
-  /* Container padding adjustments for proper alignment */
-  .container, .container-fluid {
-    padding-left: 15px;
-    padding-right: 15px;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    max-width: 100%;
-  }
-  
-  /* Fix any potential overflow issues */
-  body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-  
-  /* Ensure hero content fits on screen */
-  .hero-content {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  /* Fix margin/padding to prevent overflow */
-  .row {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  
-  .col, [class*="col-"] {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  /* Logo adjustment */
-  .hero-image {
-    max-width: 70%;
-    margin: 0 auto;
-  }
-  
-  /* Fix buttons overflow */
-  .d-flex.flex-wrap.gap-2 {
-    justify-content: center;
-    width: 100%;
-  }
-  
-  /* Adjust social media icons layout */
-  .social-icons {
-    width: 100%;
-    justify-content: center;
-    gap: 8px;
-    margin: 0 auto 20px;
-    max-width: 280px; /* Ensure width fits all icons */
-  }
-  
-  .social-icon-link {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-  
-  /* Center footer content better */
-  .footer .col-md-3 {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-
-/* Fix for collapsed menu dropdown positioning */
-@media (max-width: 991px) {
-  .navbar-collapse {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: auto;
-    margin-left: 15px;
-    margin-right: 15px;
-    z-index: 1000;
-  }
-  
-  .container > .navbar {
-    position: relative;
+    padding: 0.25rem 0.5rem; /* Smaller toggle button */
   }
 }
 
@@ -605,10 +550,12 @@ section {
 .work-item .card:hover .card-img-top {
   transform: scale(1.05);
 }
+
 .work-item .card-title {
   color: var(--text-color);
   font-weight: 600;
 }
+
 .work-item .card-text {
   color: var(--light-text);
 }
@@ -616,21 +563,23 @@ section {
 .work-item .card-body {
   color: var(--text-color);
 }
+
 .card-link {
   text-decoration: none;
   color: inherit;
 }
+
 .card-link:hover {
   text-decoration: none;
   color: inherit;
 }
-}/* Ensure dark mode has proper colors */
+
+/* Ensure dark mode has proper colors */
 [data-theme="dark"] .work-item .card-body,
 [data-theme="dark"] .work-item .card-title,
 [data-theme="dark"] .work-item .card-text {
   color: #f1f5f9;
 }
-/* Add this after the work-item styling section */
 
 /* Fix for work description text color in dark mode */
 [data-theme="dark"] .work-item .card-body p {
@@ -644,6 +593,7 @@ section {
 [data-theme="dark"] .card-body {
   color: #f1f5f9; /* General card body text color fix */
 }
+
 .work-item .card-title {
   font-weight: 600;
   margin-bottom: 0.75rem;
@@ -665,25 +615,6 @@ section {
 
 .work-item .card:hover .card-title::after {
   width: 100%;
-}
-
-/* Responsive adjustments */
-@media (max-width: 991px) {
-  .section-title {
-    font-size: 2.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .section-title {
-    font-size: 1.75rem;
-  }
 }
 
 /* About Section */
@@ -775,14 +706,6 @@ section {
 .about-icon-container:hover .about-icon {
   transform: scale(1.2);
   color: var(--accent-color);
-}
-
-@media (max-width: 768px) {
-  .about-icon-container {
-    width: 150px;
-    height: 150px;
-    margin-top: 2rem;
-  }
 }
 
 /* Enhanced Skills Section */
@@ -1075,78 +998,35 @@ section {
   color: var(--primary-light);
 }
 
-.social-icons {
-  display: flex;
-  gap: 10px;
-  margin-top: 1rem;
-}
-
-.social-icon-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: var(--text-color);
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.social-icon-link:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-  transform: translateY(-5px);
-}
-
-.footer-logo-container {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.footer-custom-logo {
-  height: 40px;
-  opacity: 0.8;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.footer-custom-logo:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.footer-bottom {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.9rem;
-  color: var(--light-text);
-}
-
-.footer-bottom p {
-  margin: 0;
-}
-
-.footer-bottom .text-md-end {
-  text-align: right;
-}
-
-@media (max-width: 768px) {
-  .footer-bottom .text-md-end {
-    text-align: left;
-    margin-top: 1rem;
-  }
-}
-
-/* Social Media Icons Styling */
+/* Social Media Icons - Improved Responsive Layout */
 .social-icons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
   max-width: 210px;
+}
+
+/* Ensure responsiveness for social icons */
+@media (max-width: 767px) {
+  .social-icons {
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
   
+  .footer h5 {
+    text-align: center;
+  }
+  
+  .footer h5::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-links {
+    text-align: center;
+  }
 }
 
 .social-icon-link {
@@ -1157,12 +1037,13 @@ section {
   height: 45px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  color:rgb(37, 38, 38);
+  color: rgb(37, 38, 38);
   font-size: 20px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
+
 /* Dark mode styles for social-icon-link */
 [data-theme="dark"] .social-icon-link {
   color: #ffffff; /* White color for icons */
@@ -1176,6 +1057,7 @@ section {
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
 }
 
+/* Footer Logo Container - Improved Responsive Design */
 .footer-logo-container {
   display: flex;
   justify-content: center;
@@ -1221,7 +1103,36 @@ section {
   color: #cbd5e1;
 }
 
-
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .about-icon-container {
+    width: 150px;
+    height: 150px;
+    margin-top: 2rem;
+  }
+  
+  .footer-bottom .text-md-end {
+    text-align: center !important;
+    margin-top: 1rem;
+  }
+  
+  .footer-bottom .text-md-start {
+    text-align: center !important;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  /* Center all columns in footer on mobile */
+  .footer .col-md-3, 
+  .footer .col-md-4, 
+  .footer .col-md-2, 
+  .footer .col-lg-2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
 
 /* Animation keyframes */
 @keyframes spin {
@@ -1250,8 +1161,17 @@ section {
   100% { transform: translateY(-100px); opacity: 0; }
 }
 
-/* Mobile optimizations */
+/* Improved Mobile optimizations */
 @media (max-width: 576px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  section {
+    padding: 3rem 0;
+  }
+  
   .hero-header h1 {
     font-size: 2.5rem;
   }
@@ -1263,10 +1183,66 @@ section {
   .hero-image {
     max-width: 80%;
     margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
   
+  /* Ensure all text content is centered on mobile */
+  .text-md-end, 
+  .text-md-start {
+    text-align: center !important;
+  }
+  
+  /* Center footer elements */
+  .footer h5::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer-links {
+    text-align: center;
+  }
+  
+  /* Center align socials */
+  .social-icons {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Make all footer content symmetrical */
+  .footer-bottom {
+    text-align: center;
+  }
+}
 
- /* SVG Logo Theming */
+/* Tablet optimizations */
+@media (min-width: 577px) and (max-width: 991px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+  
+  /* Center align on tablets */
+  .footer-logo-container {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  /* Ensure footer is responsive on tablets */
+  .footer .col-md-3 {
+    margin-bottom: 2rem;
+  }
+  
+  /* Better alignment for social icons */
+  .social-icons {
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* SVG Logo Theming */
 .navbar-brand svg path,
 .footer-logo svg path,
 .footer-custom-logo svg path,
