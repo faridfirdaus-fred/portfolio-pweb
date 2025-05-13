@@ -1062,12 +1062,6 @@ section {
   transition: all 0.3s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
-/* Dark mode styles for social-icon-link */
-[data-theme="dark"] .social-icon-link {
-  color: #ffffff; /* White color for icons */
-  background-color: rgba(255, 255, 255, 0.2); /* Slightly brighter background */
-  box-shadow: 0 3px 8px rgba(255, 255, 255, 0.2); /* Adjust shadow for better visibility */
-}
 
 .social-icon-link:hover {
   transform: translateY(-5px) scale(1.05);

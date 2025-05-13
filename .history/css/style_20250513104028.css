@@ -77,18 +77,7 @@ body {
 [data-theme="dark"] .navbar-container.scrolled {
   background-color: rgba(30, 41, 59, 0.85);
 }
-/* Make active nav links more visible in dark mode */
-[data-theme="dark"] .nav-link.active {
-  color: var(--primary-light); /* Lighter shade for better visibility */
-  font-weight: 700; /* Make it bolder */
-}
 
-/* Make the active underline more visible in dark mode */
-[data-theme="dark"] .nav-link.active::after {
-  width: 80%; /* Ensure the underline is visible */
-  height: 3px; /* Make it slightly thicker */
-  background-color: var(--primary-light); /* Brighter color for the underline */
-}
 .navbar-brand {
   font-weight: 700;
   font-size: 1.5rem;
@@ -172,16 +161,17 @@ body {
 }
 
 .theme-toggle .dark-icon {
-  display: none; /* Hide moon icon in light mode */
+  display: inline-block;
 }
 
 [data-theme="dark"] .theme-toggle .light-icon {
-  display: none; /* Hide sun icon in dark mode */
+  display: inline-block;
 }
 
 [data-theme="dark"] .theme-toggle .dark-icon {
-  display: inline-block; /* Show moon icon in dark mode */
+  display: none;
 }
+
 /* Adjust hero section to account for fixed navbar */
 .hero-header {
   padding-top: 100px;
@@ -504,30 +494,9 @@ section {
 .work-item .card:hover .card-img-top {
   transform: scale(1.05);
 }
-.work-item .card-title {
-  color: var(--text-color);
-  font-weight: 600;
-}
-.work-item .card-text {
-  color: var(--light-text);
-}
 
 .work-item .card-body {
-  color: var(--text-color);
-}
-.card-link {
-  text-decoration: none;
-  color: inherit;
-}
-.card-link:hover {
-  text-decoration: none;
-  color: inherit;
-}
-}/* Ensure dark mode has proper colors */
-[data-theme="dark"] .work-item .card-body,
-[data-theme="dark"] .work-item .card-title,
-[data-theme="dark"] .work-item .card-text {
-  color: #f1f5f9;
+  padding: 1.5rem;
 }
 /* Add this after the work-item styling section */
 
@@ -928,27 +897,34 @@ section {
   font-size: 0.9rem;
 }
 
-/* Footer Styling */
-.footer {
-  background: linear-gradient(to bottom, var(--bg-gradient-from), var(--bg-gradient-to));
-  color: var(--light-text);
-  padding: 4rem 0 2rem;
+/.footer {
+  background-color: #0f172a;
+  background-image: linear-gradient(to bottom, #1e293b, #0f172a);
+  color: #f8fafc;
+  padding: 4rem 0 1rem;
   position: relative;
   border-top: 5px solid rgba(129, 140, 248, 0.3);
+}
+
+[data-theme="light"] .footer {
+  background-color: #3d2e1b;
+  background-image: linear-gradient(to bottom, #4a3621, #2d2211);
+  border-top: 5px solid rgba(139, 107, 74, 0.7);
 }
 
 .footer h5 {
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: var(--text-color);
   position: relative;
+  padding-bottom: 0.75rem;
+  color: #f1f5f9;
 }
 
 .footer h5::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: 0;
   width: 40px;
   height: 3px;
   background-color: var(--primary-color);
@@ -962,80 +938,33 @@ section {
 
 .footer-links li {
   margin-bottom: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.footer-links li:hover {
+  transform: translateX(5px);
 }
 
 .footer-links a {
-  color: var(--light-text);
+  color: #cbd5e1;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
 }
 
 .footer-links a:hover {
   color: var(--primary-light);
 }
 
-.social-icons {
-  display: flex;
-  gap: 10px;
-  margin-top: 1rem;
-}
-
-.social-icon-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  color: var(--text-color);
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
-}
-
-.social-icon-link:hover {
+.footer-links a:hover::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
   background-color: var(--primary-color);
-  color: #fff;
-  transform: translateY(-5px);
-}
-
-.footer-logo-container {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.footer-custom-logo {
-  height: 40px;
-  opacity: 0.8;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.footer-custom-logo:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.footer-bottom {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.9rem;
-  color: var(--light-text);
-}
-
-.footer-bottom p {
-  margin: 0;
-}
-
-.footer-bottom .text-md-end {
-  text-align: right;
-}
-
-@media (max-width: 768px) {
-  .footer-bottom .text-md-end {
-    text-align: left;
-    margin-top: 1rem;
-  }
 }
 
 /* Social Media Icons Styling */
@@ -1045,7 +974,6 @@ section {
   gap: 10px;
   margin-bottom: 20px;
   max-width: 210px;
-  
 }
 
 .social-icon-link {
@@ -1056,17 +984,11 @@ section {
   height: 45px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  color:rgb(37, 38, 38);
+  color: #f1f5f9;
   font-size: 20px;
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-}
-/* Dark mode styles for social-icon-link */
-[data-theme="dark"] .social-icon-link {
-  color: #ffffff; /* White color for icons */
-  background-color: rgba(255, 255, 255, 0.2); /* Slightly brighter background */
-  box-shadow: 0 3px 8px rgba(255, 255, 255, 0.2); /* Adjust shadow for better visibility */
 }
 
 .social-icon-link:hover {
@@ -1165,36 +1087,4 @@ section {
   }
   
 
- /* SVG Logo Theming */
-.navbar-brand svg path,
-.footer-logo svg path,
-.footer-custom-logo svg path,
-.hero-image svg path {
-  transition: fill 0.3s ease;
-}
-
-/* Logo colors for light mode */
-[data-theme="light"] .navbar-brand svg path,
-[data-theme="light"] .footer-logo svg path,
-[data-theme="light"] .footer-custom-logo svg path,
-[data-theme="light"] .hero-image svg path {
-  fill: #18181b; /* Dark color for light mode */
-}
-
-/* Logo colors for dark mode */
-[data-theme="dark"] .navbar-brand svg path,
-[data-theme="dark"] .footer-logo svg path,
-[data-theme="dark"] .footer-custom-logo svg path,
-[data-theme="dark"] .hero-image svg path {
-  fill: #f1f5f9; /* Light color for dark mode */
-}
-
-/* For logos with multiple colors, you can target specific paths */
-/* Example: 
-[data-theme="dark"] .navbar-brand svg .primary-path {
-  fill: var(--primary-color);
-}
-[data-theme="dark"] .navbar-brand svg .secondary-path {
-  fill: var(--accent-color);
-}
-*/
+ 
