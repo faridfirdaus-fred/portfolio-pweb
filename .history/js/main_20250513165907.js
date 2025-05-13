@@ -221,7 +221,7 @@ $(document).ready(function () {
 
     // Send email using EmailJS
     emailjs
-      .send("service_fed5lpw", "template_gbepq5g", formData)
+      .send("service_fed5lpw", "YOUR_TEMPLATE_ID", formData)
       .then(function () {
         // Success
         formStatus.html(
