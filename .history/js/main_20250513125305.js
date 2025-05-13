@@ -121,48 +121,44 @@ $(document).ready(function () {
     anchorPlacement: "top-bottom",
   });
 
+// Document ready function with all initializations
+$(document).ready(function () {
+  // Initialize theme toggle
+  initThemeToggle();
+
+  // Create particles
+  createParticles();
+
+  // Animate progress bars
+  animateProgressBars();
+
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    easing: "ease-in-out",
+    once: false,
+    mirror: true,
+    anchorPlacement: "top-bottom",
+  });
+
   // Mobile menu handling
-  let isMenuOpen = false;
-
-$(".navbar-toggler").on("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  if (isMenuOpen) {
-    // Close menu
-    isMenuOpen = false;
-    $(".navbar-collapse").removeClass("show");
-    $(this).attr("aria-expanded", "false");
-  } else {
-    // Open menu
-    isMenuOpen = true;
-    $(".navbar-collapse").addClass("show");
-    $(this).attr("aria-expanded", "true");
-  }
-});
-
-
+  $('.navbar-toggler').on('click', function() {
+    $('.navbar-collapse').toggleClass('show');
+  });
 
   // Close mobile menu when clicking outside
-  $(document).on("click", function (e) {
-    if (!$(e.target).closest(".navbar").length && isMenuOpen) {
-      isMenuOpen = false;
-      $(".navbar-collapse").removeClass("show");
-      $(".navbar-toggler").attr("aria-expanded", "false");
+  $(document).on('click', function(e) {
+    if (!$(e.target).closest('.navbar').length) {
+      $('.navbar-collapse').removeClass('show');
     }
   });
 
   // Close mobile menu when clicking on a nav link
-  $(".nav-link").on("click", function () {
-    isMenuOpen = false;
-    $(".navbar-collapse").removeClass("show");
-    $(".navbar-toggler").attr("aria-expanded", "false");
+  $('.nav-link').on('click', function() {
+    $('.navbar-collapse').removeClass('show');
   });
 
-  // Prevent clicks inside navbar from closing the menu
-  $(".navbar").on("click", function (e) {
-    e.stopPropagation();
-  });
+  // ... rest of the existing code ...
 
   // Typing animation for hero section
   if ($(".typing-text").length) {

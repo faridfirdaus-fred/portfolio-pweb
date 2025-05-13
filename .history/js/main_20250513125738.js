@@ -122,31 +122,21 @@ $(document).ready(function () {
   });
 
   // Mobile menu handling
-  let isMenuOpen = false;
+  $(".navbar-toggler").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-$(".navbar-toggler").on("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
+    // Toggle aria-expanded attribute
+    const isExpanded = $(this).attr("aria-expanded") === "true";
+    $(this).attr("aria-expanded", !isExpanded);
 
-  if (isMenuOpen) {
-    // Close menu
-    isMenuOpen = false;
-    $(".navbar-collapse").removeClass("show");
-    $(this).attr("aria-expanded", "false");
-  } else {
-    // Open menu
-    isMenuOpen = true;
-    $(".navbar-collapse").addClass("show");
-    $(this).attr("aria-expanded", "true");
-  }
-});
-
-
+    // Toggle menu
+    $(".navbar-collapse").toggleClass("show");
+  });
 
   // Close mobile menu when clicking outside
   $(document).on("click", function (e) {
-    if (!$(e.target).closest(".navbar").length && isMenuOpen) {
-      isMenuOpen = false;
+    if (!$(e.target).closest(".navbar").length) {
       $(".navbar-collapse").removeClass("show");
       $(".navbar-toggler").attr("aria-expanded", "false");
     }
@@ -154,7 +144,6 @@ $(".navbar-toggler").on("click", function (e) {
 
   // Close mobile menu when clicking on a nav link
   $(".nav-link").on("click", function () {
-    isMenuOpen = false;
     $(".navbar-collapse").removeClass("show");
     $(".navbar-toggler").attr("aria-expanded", "false");
   });

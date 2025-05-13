@@ -124,24 +124,14 @@ $(document).ready(function () {
   // Mobile menu handling
   let isMenuOpen = false;
 
-$(".navbar-toggler").on("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
+  $(".navbar-toggler").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (isMenuOpen) {
-    // Close menu
-    isMenuOpen = false;
-    $(".navbar-collapse").removeClass("show");
-    $(this).attr("aria-expanded", "false");
-  } else {
-    // Open menu
-    isMenuOpen = true;
-    $(".navbar-collapse").addClass("show");
-    $(this).attr("aria-expanded", "true");
-  }
-});
-
-
+    isMenuOpen = !isMenuOpen;
+    $(this).attr("aria-expanded", isMenuOpen);
+    $(".navbar-collapse").toggleClass("show");
+  });
 
   // Close mobile menu when clicking outside
   $(document).on("click", function (e) {

@@ -122,41 +122,22 @@ $(document).ready(function () {
   });
 
   // Mobile menu handling
-  let isMenuOpen = false;
-
-$(".navbar-toggler").on("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
-
-  if (isMenuOpen) {
-    // Close menu
-    isMenuOpen = false;
-    $(".navbar-collapse").removeClass("show");
-    $(this).attr("aria-expanded", "false");
-  } else {
-    // Open menu
-    isMenuOpen = true;
-    $(".navbar-collapse").addClass("show");
-    $(this).attr("aria-expanded", "true");
-  }
-});
-
-
+  $(".navbar-toggler").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(".navbar-collapse").toggleClass("show");
+  });
 
   // Close mobile menu when clicking outside
   $(document).on("click", function (e) {
-    if (!$(e.target).closest(".navbar").length && isMenuOpen) {
-      isMenuOpen = false;
+    if (!$(e.target).closest(".navbar").length) {
       $(".navbar-collapse").removeClass("show");
-      $(".navbar-toggler").attr("aria-expanded", "false");
     }
   });
 
   // Close mobile menu when clicking on a nav link
   $(".nav-link").on("click", function () {
-    isMenuOpen = false;
     $(".navbar-collapse").removeClass("show");
-    $(".navbar-toggler").attr("aria-expanded", "false");
   });
 
   // Prevent clicks inside navbar from closing the menu
